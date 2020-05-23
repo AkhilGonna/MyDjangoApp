@@ -1,1 +1,1 @@
-web: guinicorn Ganal.wsgi
+web: gunicorn Ganal.wsgi
