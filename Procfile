@@ -1,1 +1,1 @@
-web: guinicorn django_project.wsgi
+web: guinicorn Ganal.wsgi
