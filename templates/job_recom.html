@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Recommender</title>
+    <link rel="stylesheet" href=" {% static 'css/job_recom.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h3> Job Recommender </h3>
+    <!-- <div class="floater">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/job_recom">Job Recommender</a></li>
+            <li><a href="#">Skill search</a></li>
+        </ul>
+    </div> -->
+    <form action="recommend", method="POST">
+        {% csrf_token %}
+        <div class="gana">
+            <ul>
+                <input type="analyse" name="github_username" placeholder="Github_Username" required>
+                <input type="submit" class="btn btn-outline-primary btn-sm" value="Recommend">
+            </ul>
+        </div>
+    </form>
+    
+    <div class="container-fluid" style="max-width:800px">
+        <div class="center">
+            {% for result in result %}
+                <div class="clo-md-6" style="margin-top: 10px;">
+                    <div class="img-thumbnail">
+                        <a href="{% url 'job_detail' result.job_id %}">{{ result.job_title }}</a><small class="float-md-right"><span class="badge badge-success">Match {{ result.score }}%</span></small><br>
+                        Company: {{ result.job_company }}<br>
+                        <!-- Skills: {{result.job_skills}}<br> -->
+                        Job ID: {{result.job_id}}<br>
+                        <div class="container">
+                                {% for skill in result.job_skills %}
+                                <span class="badge badge-light">{{skill}}</span>
+                                {% endfor %}
+                        </div>
+                        <!-- <h6 class="float-md-right"><span class="badge badge-primary">Apply</span></h6> -->
+                        <!-- Match: {{result.match}} -->
+                        <a href="{{result.link}}"><button type="button" class="btn btn-outline-primary btn-sm">Apply</button></a><small class="float-md-right"><span class="badge badge-info">Posted {{ result.job_age }} days ago</span></small>
+                    </div>
+                </div>
+            {% endfor %}<br>
+            <!-- {% for job_id in report.job_id %}
+            {% for job_title in report.job_title %}
+            {% for job_skills in report.job_skills %}
+            {% for job_score in report.score %}
+            {% for job_company in report.company %}
+                <div class="clo-md-6">
+                    <div class="img-thumbnail">
+                        <a href="#">{{ job_title }}</a><small style="float:right">{{ job_score }}</small><br>
+                        Company: {{ job_company }}<br>
+                        Skills: {{job_skills}}
+                        Job ID: {{job_id}}
+                    </div>
+                </div>
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            {% endfor %} -->
+        </div>
+    </div>
+    
+<!-- 
+    {% for company in company %}
+        <p>{{ company }}</p>
+    {% endfor %} -->
+
+</body>
+</html>

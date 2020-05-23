@@ -1,0 +1,23 @@
+body{
+    background-color: white;
+}
+h3{
+    text-align: center;
+    padding-top: 50px;
+    color: black;
+}
+.floater ul{
+    padding-top: 25px;
+    display: inline-flex;
+    margin-left: 500px;
+}
+.floater ul li{
+    list-style: none;
+    margin-left: 50px;
+}
+
+.gana{
+    padding-top: 20px;
+    color: black;
+    margin-left: 500px;
+}

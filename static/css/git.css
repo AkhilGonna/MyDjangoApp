@@ -1,0 +1,37 @@
+body{
+    background-color:white;
+}
+
+h1{
+    text-align: center;
+    padding-top: 50px;
+    color: black;
+}
+.floater ul{
+    padding-top: 25px;
+    display: inline-flex;
+    margin-left: 400px;
+}
+.floater ul li{
+    list-style: none;
+    margin-left: 50px;
+}
+
+.gana{
+    padding-top: 20px;
+    color: black;
+    margin-left: 500px;
+}
+
+.image img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 800px; 
+    width: 1200px;
+}
+
+.prof_pic img{
+    padding-left: 70px;
+
+}

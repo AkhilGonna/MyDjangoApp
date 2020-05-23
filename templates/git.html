@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone</title>
+    <link rel="stylesheet" href=" {% static 'css/git.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}    
+    <!-- <div class="floater">
+        <ul>
+            <li><a href="/">Home</a></li>
+			<li><a href="/job_recom">Job Recommender</a></li>
+			<li><a href="/">Skill search</a></li>
+        </ul>
+    </div> -->
+
+    <form action="result", method="POST">
+        {% csrf_token %}
+        <div class="gana">
+            <ul>
+                <input type="analyse" name="github_username" placeholder="Github_Username" required>
+                <input type="submit" class="btn btn-outline-primary btn-sm" value="Analyse">
+            </ul>
+        </div>
+    </form>
+    {% if method == POST %}
+    <div class="container-fluid">
+        <!-- <div class="prof_pic">
+            <a href="{{url}}"><img src="{{prof_pic}}" style="max-width:410px;max-height:300px ;" class="rounded float-left" alt="prof_pic"></a>
+        </div> -->
+        
+        <div class="container-fluid" style="max-width:950px">
+            <a href="{{url}}"><img src="{{prof_pic}}" style="max-height:300px" class="rounded float-left" alt="prof_pic"></a>
+            <ul class="list-group">
+                <li class="list-group-item">GitHub username: <a href="{{url}}">{{git_username}}</a></li>
+                <li class="list-group-item">GitHub Id: {{git_id}}</li>
+                <li class="list-group-item">Company: {{company}}</li>
+                <li class="list-group-item">Location: {{location}}</li>
+                <li class="list-group-item">Public Repositories: {{repos}}</li>
+                <li class="list-group-item">Biography: {{bio}}</li>
+            </ul>
+        </div>
+    </div>
+        <br>
+    <!-- <button type="submit" class="btn btn-primary" style="margin-left:650px" value="Recommend">My Jobs</button> -->
+    <!-- <form action="recommend", method="POST">
+        {% csrf_token %}
+        <input type="name" style="margin-left:550px" name="github_username" value="{{git_username}}">
+        <input type="submit" style="margin-left:600px;margin-top:10px" class="btn btn-primary btn-sm" value="My Jobs">
+    </form> -->
+    <form class="form-inline" action="recommend", method="POST">
+        {% csrf_token %}
+        <div class="form-group mb-2">
+          <label for="github_username" class="sr-only">github_username</label>
+          <input type="text" readonly style="margin-left:550px" class="form-control-plaintext" name="github_username" value="{{git_username}}">
+        </div>
+        <input type="submit" class="btn btn-primary btn-sm" value="My Jobs">
+    </form>
+    <div class="image">
+        <img src= "{{analysis_pic}}" alt="analaysis">
+    </div>
+    <div class="image">
+        <img src="{{exp_pic}}">
+    </div>
+    <br><br>
+    {% for exp in exp_df.lang_code %}
+        {{exp}}
+    {% endfor %}
+    <div class="container-md">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Language</th>
+                <th scope="col">Experience (Years)</th>
+                <th scope="col">Number of Repositories</th>
+                <th scope="col">Stars</th>
+                <th scope="col">Forks</th>
+                <th scope="col">Recent date</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for exp in exp_data %}
+                    <tr>
+                        <td>{{exp.language}}</td>
+                        <td>{{exp.experience}}</td>
+                        <td>{{exp.num_repos}}</td>
+                        <td>{{exp.stars}}</td>
+                        <td>{{exp.forks}}</td>
+                        <td>{{exp.recent_date}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(52, 145, 145);
+}
+h1{
+    text-align: center;
+    padding-top: 100px;
+    color: white;
+}
+.floater ul{
+    display: inline-flex;
+    margin-left: 250px;
+}
+.floater ul li{
+    list-style: none;
+    margin-left: 30px;
+}
+
+.gana{
+    color: azure;
+}

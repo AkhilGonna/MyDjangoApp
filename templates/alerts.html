@@ -1,0 +1,9 @@
+<div class="messages">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-warning" role="alert" style="text-align: center;">
+          {{ message }}. Please login into <a href="https://www.github.com" target="_blank" class="alert-link">GitHub</a> to find your username. 
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>

@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href=" {% static 'css/job_recom.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}  
+    <div class="container-fluid" style="max-width: 650px; margin-top:40px">
+        <dl class="row">
+            <dt class="col-sm-3">Job Title</dt>
+            <dd class="col-sm-9">{{job.job_title}}</dd>
+          
+            <dt class="col-sm-3">Job Id</dt>
+            <dd class="col-sm-9">{{job.job_id}}</dd>
+          
+            <dt class="col-sm-3">Company Name</dt>
+            <dd class="col-sm-9">{{job.job_company}}</dd>
+          
+            <dt class="col-sm-3 text-truncate">Skills</dt>
+            <dd class="col-sm-9">
+                {% for skill in job.job_skills %}
+                <span class="badge badge-light">{{skill}}</span>
+                {% endfor %}</dd>
+          </dl>
+        <a href="{{job.link}}"><button type="button" class="btn btn-outline-primary btn-sm">Apply</button></a>
+    </div>
+    <div class="container-fluid" style="max-width:650px; margin-top:20px">
+        {% for c in candidate %}
+        {% for u in user_info %}
+        {% if c.name == u.name %}     
+            <div class="img-thumbnail">
+                <img src="/{{u.prof_pic}}" class="rounded float-left" style="max-width:90;max-height:90px;">
+                <a href="{{u.url}}">{{ c.name }} </a><small class="float-md-right"><span class="badge badge-success">Match {{ c.score }}%</span></small><br>
+                Company: {{ u.company }}<br>
+                Email: {{u.email}}<br>
+                #Repositories:{{u.repos}}
+                <small class="float-md-right"><span class="badge badge-info">Rank: #{{c.rank}}</span></small>
+            </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
