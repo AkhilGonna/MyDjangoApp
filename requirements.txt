@@ -38,7 +38,6 @@ Jinja2==2.10.3
 Js2Py==0.67
 jsonschema==3.2.0
 jupyter-client==5.3.4
-jupyter-core==4.6.1
 kivy-deps.angle==0.2.0
 kivy-deps.glew==0.2.0
 kivy-deps.gstreamer==0.2.0
