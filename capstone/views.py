@@ -21,7 +21,7 @@ def analyse(request):
 #Fetching Repository data using API
 def repo_fetch(user_data):
     #API Key
-    token = 'ef57f5e210f422e08df558ad003b04f76c0c0c3a'
+    token = '37350456d95f0ef2f4ff60883b97feb2bd9a27ba'
     headers = {'Authorization': 'token ' + token}
 
     page_no = 1
@@ -123,7 +123,7 @@ def save_fig(x_axis,y_axis, path,name):
 def result(request):
     if request.method == 'POST':
         #API Key
-        token = 'ef57f5e210f422e08df558ad003b04f76c0c0c3a'
+        token = '37350456d95f0ef2f4ff60883b97feb2bd9a27ba'
         headers = {'Authorization': 'token ' + token}
         #Taking user input and fetching data from API
         github_username = request.POST['github_username']            
@@ -131,6 +131,8 @@ def result(request):
         requestObj = requests.get(url=url,headers=headers)
         user_data = requestObj.json()   #JSON data
         # Check for the Valid user
+        print(url)
+        print(user_data)
         if len(user_data) == 2:
             messages.warning(request, 'GitHub username is Invalid')
             return redirect('analyse')
