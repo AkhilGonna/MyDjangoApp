@@ -12,7 +12,7 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h3><a href="https://www.github.com" target="_blank" class="alert-link">GitHub</a> Analyser</h3>
+    <h3><a href="https://www.github.com" target="_blank" class="alert-link" style="text-align: center;">GitHub</a> Analyser</h3>
     <!-- {% include 'alerts.html' %} -->
     <!-- <img src="/media/network analysis.jpg" alt="Analysis" style='max-width:200px;max-height:200px;text-align:center;border-radius:80%' > -->
     
@@ -25,7 +25,7 @@
     </div> -->
     <form action="result", method="POST">
         {% csrf_token %}
-        <div class="gana">
+        <div class="container-md" style="text-align: center; margin-top: 20px">
             <ul>
                 <input type="analyse" name="github_username" placeholder="Github_Username" required>
                 <input type="submit" class="btn btn-outline-primary btn-sm" value="Analyse">

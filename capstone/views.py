@@ -131,8 +131,6 @@ def result(request):
         requestObj = requests.get(url=url,headers=headers)
         user_data = requestObj.json()   #JSON data
         # Check for the Valid user
-        print(url)
-        print(user_data)
         if len(user_data) == 2:
             messages.warning(request, 'GitHub username is Invalid')
             return redirect('analyse')
@@ -155,6 +153,7 @@ def result(request):
 
                 
                 analysis_pic_url = 'media/analysis_pics/'+ github_username.lower() + '.png'
+                print(analysis_pic_url)
                 save_fig(languages_count.index,languages_count.values,analysis_pic_url,name='Repositories')
 
                 prof_pic_url = 'media/prof_pics/'+ github_username.lower() + '.png'
