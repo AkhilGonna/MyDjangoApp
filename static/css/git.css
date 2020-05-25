@@ -16,22 +16,3 @@ h1{
     list-style: none;
     margin-left: 50px;
 }
-
-.gana{
-    padding-top: 20px;
-    color: black;
-    margin-left: 500px;
-}
-
-.image img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 800px; 
-    width: 1200px;
-}
-
-.prof_pic img{
-    padding-left: 70px;
-
-}

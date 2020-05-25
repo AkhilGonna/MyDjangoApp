@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capstone</title>
+    <title>GitHub JobRecommender</title>
     <link rel="stylesheet" href=" {% static 'css/home.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -13,16 +13,6 @@
 <body>
     {% include 'navbar.html' %}
     <h3><a href="https://www.github.com" target="_blank" class="alert-link" style="text-align: center;">GitHub</a> Analyser</h3>
-    <!-- {% include 'alerts.html' %} -->
-    <!-- <img src="/media/network analysis.jpg" alt="Analysis" style='max-width:200px;max-height:200px;text-align:center;border-radius:80%' > -->
-    
-    <!-- <div class="floater">
-        <ul>
-            <li><a href="/">Home</a></li>
-			<li><a href="/job_recom">Job Recommender</a></li>
-			<li><a href="/">Skill search</a></li>
-        </ul>
-    </div> -->
     <form action="result", method="POST">
         {% csrf_token %}
         <div class="container-md" style="text-align: center; margin-top: 20px">

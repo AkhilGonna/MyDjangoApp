@@ -4,24 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capstone</title>
+    <title>Analysis</title>
     <link rel="stylesheet" href=" {% static 'css/git.css' %}">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
     {% include 'navbar.html' %}    
-    <!-- <div class="floater">
-        <ul>
-            <li><a href="/">Home</a></li>
-			<li><a href="/job_recom">Job Recommender</a></li>
-			<li><a href="/">Skill search</a></li>
-        </ul>
-    </div> -->
 
     <form action="result", method="POST">
         {% csrf_token %}
-        <div class="gana">
+        <div class="container-md" style="text-align: center; margin-top: 20px">
             <ul>
                 <input type="analyse" name="github_username" placeholder="Github_Username" required>
                 <input type="submit" class="btn btn-outline-primary btn-sm" value="Analyse">
@@ -29,12 +24,10 @@
         </div>
     </form>
     {% if method == POST %}
-    <div class="container-fluid">
-        <!-- <div class="prof_pic">
-            <a href="{{url}}"><img src="{{prof_pic}}" style="max-width:410px;max-height:300px ;" class="rounded float-left" alt="prof_pic"></a>
-        </div> -->
+    <!-- <div class="container-fluid">
         
         <div class="container-fluid" style="max-width:950px">
+            <a href="{{url}}"><img src="{{prof_pic}}" class="rounded float-left" alt="..." class="img-thumbnail"></a>
             <a href="{{url}}"><img src="{{prof_pic}}" style="max-height:300px" class="rounded float-left" alt="prof_pic"></a>
             <ul class="list-group">
                 <li class="list-group-item">GitHub username: <a href="{{url}}">{{git_username}}</a></li>
@@ -45,8 +38,21 @@
                 <li class="list-group-item">Biography: {{bio}}</li>
             </ul>
         </div>
+    </div> -->
+    <div class="container-fluid" style="max-width:650px; margin-top:20px">  
+            <div class="img-thumbnail">
+                <a href="{{url}}"><img src="{{prof_pic}}" class="rounded float-left" style="max-width:250;max-height:250px; alt="prof_pic"></a>
+            
+                <ul class="list-group">
+                    <li class="list-group-item">GitHub username: <a href="{{url}}">{{git_username}}</a></li>
+                    <li class="list-group-item">GitHub Id: {{git_id}}</li>
+                    <li class="list-group-item">Company: {{company}}</li>
+                    <li class="list-group-item">Location: {{location}}</li>
+                    <li class="list-group-item">Public Repositories: {{repos}}</li>
+                    <li class="list-group-item">Biography: {{bio}}</li>
+                </ul>
+            </div>
     </div>
-        <br>
     <!-- <button type="submit" class="btn btn-primary" style="margin-left:650px" value="Recommend">My Jobs</button> -->
     <!-- <form action="recommend", method="POST">
         {% csrf_token %}
@@ -55,23 +61,26 @@
     </form> -->
     <form class="form-inline" action="recommend", method="POST">
         {% csrf_token %}
-        <div class="form-group mb-2">
-          <label for="github_username" class="sr-only">github_username</label>
-          <input type="text" readonly style="margin-left:550px" class="form-control-plaintext" name="github_username" value="{{git_username}}">
+        
+        <label for="github_username"  class="sr-only">github_username</label>
+        <input type="text" style="opacity: 0;" class="form-control-plaintext" name="github_username" value="{{git_username}}">
+        <div class="container-md" style="text-align: center">
+          <input type="submit" class="btn btn-primary btn-sm" value="My Jobs">
         </div>
-        <input type="submit" class="btn btn-primary btn-sm" value="My Jobs">
     </form>
     <div class="image">
-        <img src= "{{analysis_pic}}" alt="analaysis">
+        <img src="{{analysis_pic}}" class="img-fluid" alt="analaysis">
+        <!-- <img src= "{{analysis_pic}}" alt="analaysis"> -->
     </div>
     <div class="image">
-        <img src="{{exp_pic}}">
+        <img src="{{exp_pic}}" class="img-fluid" alt="analaysis">
+        <!-- <img src="{{exp_pic}}"> -->
     </div>
     <br><br>
     {% for exp in exp_df.lang_code %}
         {{exp}}
     {% endfor %}
-    <div class="container-md">
+    <div class="container-md" style="text-align: center">
         <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
@@ -100,5 +109,18 @@
     
     {% endif %}
 
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(1000);
+            }, 5000);
+            });
+    </script>
+    
 </body>
 </html>
