@@ -57,7 +57,7 @@ pandocfilters==1.4.2
 parso==0.5.2
 pickleshare==0.7.5
 Pillow==9.0.1
-pipenv==2018.11.26
+pipenv==2022.1.8
 pipwin==0.4.6
 playsound==1.2.2
 plotly==4.5.2
