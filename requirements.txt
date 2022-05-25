@@ -69,7 +69,7 @@ pycodestyle==2.5.0
 pygame==1.9.6
 Pygments==2.5.2
 pyjsparser==2.7.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.4.4
 pylint-django==2.0.14
 pylint-plugin-utils==0.6
